@@ -123,7 +123,7 @@ class Warrior():
             if self_atack_random == 0:
                 lefttext_system_m(f'{self.name} missed! {mob.name} left {mob.hp} HP')
             else:
-                lefttext_system_m(f'{mob.name} demaged for {self_atack_random} from {self.name}! Enemy has left {mob.hp} HP')
+                lefttext_system_m(f'{mob.name} damaged for {self_atack_random} from {self.name}! Enemy has left {mob.hp} HP')
     # Joke-cheat, if use it your params will be 10050 =)
     def loki(self):
         self.lvl = 100500

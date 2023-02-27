@@ -84,7 +84,7 @@ class Game:
                 self.player = self.new_player()
                 # output player data
                 gridoutput(self.player.player_info_dict())
-                while self.player.is_alive():
+                while self.player.is_alive:
                     self.main_game()
             # If database exist, create new player or load from save
             else:

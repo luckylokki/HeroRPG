@@ -48,24 +48,30 @@ def lefttext_system_l(text):
 
 def lefttext_system_g(text):
     print(Fore.GREEN + '{:<70}'.format(text))
+    print(Style.RESET_ALL)
 def lefttext_system_gl(text):
     print(Fore.LIGHTGREEN_EX + '{:<70}'.format(text))
+    print(Style.RESET_ALL)
 
 
 def lefttext_system_c(text):
     print(Fore.CYAN + '{:<70}'.format(text))
+    print(Style.RESET_ALL)
 def lefttext_system_cl(text):
     print(Fore.LIGHTCYAN_EX + '{:<70}'.format(text))
+    print(Style.RESET_ALL)
 def lefttext_system_m(text):
     print(Fore.MAGENTA + '{:<70}'.format(text))
+    print(Style.RESET_ALL)
 def lefttext_system_ml(text):
     print(Fore.LIGHTMAGENTA_EX + '{:<70}'.format(text))
+    print(Style.RESET_ALL)
 def lefttext_system_grats(text):
     print(Fore.YELLOW + '{:<70}'.format(text))
+    print(Style.RESET_ALL)
 def lefttext_system_grats_l(text):
     print(Fore.LIGHTYELLOW_EX + '{:<70}'.format(text))
-
-
+    print(Style.RESET_ALL)
 
 
 # right-justify print
@@ -83,17 +89,18 @@ def righttext_system_l(text):
 
 def righttext_system_g(text):
     print(Fore.GREEN + '{:>70}'.format(text))
+    print(Style.RESET_ALL)
 def righttext_system_gl(text):
     print(Fore.LIGHTGREEN_EX + '{:>70}'.format(text))
-
+	print(Style.RESET_ALL)
 
 def righttext_system_c(text):
     print(Fore.CYAN + '{:>70}'.format(text))
-
+	print(Style.RESET_ALL)
 
 def righttext_system_cl(text):
     print(Fore.LIGHTCYAN_EX + '{:>70}'.format(text))
-
+	print(Style.RESET_ALL)
 
 # centered print
 
@@ -112,7 +119,6 @@ def centertext_system_l(text):
     for line in wrapstring:
         print(Fore.LIGHTRED_EX + '{:^70}'.format(line))
         print(Style.RESET_ALL)
-
 def centertext_system_g(text):
     wrapstring = textwrap.wrap(text, width=70)
     for line in wrapstring:
@@ -128,13 +134,11 @@ def centertext_system_c(text):
     for line in wrapstring:
         print(Fore.CYAN + '{:^70}'.format(line))
         print(Style.RESET_ALL)
-
 def centertext_system_cl(text):
     wrapstring = textwrap.wrap(text, width=70)
     for line in wrapstring:
         print(Fore.LIGHTCYAN_EX + '{:^70}'.format(line))
         print(Style.RESET_ALL)
-
 def centertext_grats(text):
     wrapstring = textwrap.wrap(text, width=70)
     for line in wrapstring:
