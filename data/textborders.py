@@ -39,7 +39,9 @@ def lefttext(text):
 def lefttext_system(text):
     print(Fore.RED + '{:<70}'.format(text))
     print(Style.RESET_ALL)
-
+def lefttext_system_rl(text):
+    print(Fore.LIGHTRED_EX + '{:<70}'.format(text))
+    print(Style.RESET_ALL)
 def lefttext_system_l(text):
     print(Fore.LIGHTRED_EX + '{:<70}'.format(text))
     print(Style.RESET_ALL)
@@ -52,14 +54,18 @@ def lefttext_system_gl(text):
 
 def lefttext_system_c(text):
     print(Fore.CYAN + '{:<70}'.format(text))
+def lefttext_system_cl(text):
+    print(Fore.LIGHTCYAN_EX + '{:<70}'.format(text))
 def lefttext_system_m(text):
     print(Fore.MAGENTA + '{:<70}'.format(text))
 def lefttext_system_ml(text):
     print(Fore.LIGHTMAGENTA_EX + '{:<70}'.format(text))
+def lefttext_system_grats(text):
+    print(Fore.YELLOW + '{:<70}'.format(text))
+def lefttext_system_grats_l(text):
+    print(Fore.LIGHTYELLOW_EX + '{:<70}'.format(text))
 
 
-def lefttext_system_cl(text):
-    print(Fore.LIGHTCYAN_EX + '{:<70}'.format(text))
 
 
 # right-justify print

@@ -48,10 +48,12 @@ class Warrior():
         }
 
     # Check player death
-    def player_dead(self):
+    def player_dead(self, mob):
         self.hp = 0
         self.is_alive = False
-        maintext_system_cl('PLAYER DIED')
+        maintext_system('PLAYER DIED')
+        lefttext_system_rl(f'You lose {mob.exp} of your EXP')
+        lefttext_system_rl(f'You lose {mob.gold} of your Gold')
         lefttext_system_g('Note: You can use Healer to resurrect.')
         lefttext_system_m('Note: Pray to the old gods! Or die forever!')
 
@@ -87,43 +89,41 @@ class Warrior():
     def atack(self, mob):
         self.pve += 1
         if mob.hp <= 0:
-            print(f'\nВы не можете атаковать {mob.name} у него меньше 5 HP')
+            lefttext_system_g(f'\nYou cant atack {mob.name} he is died...')
             return
-        print(f'Битва между {self.name} и {mob.name} началась')
+        centertext_grats(f'The fight between {self.name} and {mob.name} is started!')
         while self.hp > 0 or mob.hp > 0:
             self_atack_random = randint(self.atk_power // 30, self.atk_power)
             mob_atack_random = randint(mob.atk_power // 30, mob.atk_power)
             self.hp -= mob_atack_random
             mob.hp -= self_atack_random
             if self.hp >= 1 and mob.hp <= 0:
-                print(f'\n{self.name} убил {mob.name}!!!')
+                lefttext_system_gl(f'\n{self.name} kill the {mob.name}!!!')
                 self.gold += mob.gold
-                print(f'\nВы получаете награду опыт {mob.exp} и {mob.gold} монет {mob.name}')
+                lefttext_system_grats(f'\nYou received {mob.exp} EXP and {mob.gold} gold {mob.name}')
                 mob.gold = 0
                 self.exp += mob.exp
                 self.exp_up()
                 break
             elif self.hp <= 0 and mob.hp >= 1:
-                self.player_dead()
                 self.exp -= mob.exp
                 self.exp_down()
                 self.gold -= mob.gold
                 if self.gold < 0:
                     self.gold = 0
-                print(Fore.LIGHTRED_EX + f'You lose {mob.exp} of your EXP')
-                print(Fore.LIGHTRED_EX + f'You lose {mob.gold} of your Gold')
+                self.player_dead(mob)
                 break
             elif mob.hp <= 0 and self.hp <= 0:
-                print('\nОба пали в равном бою!')
+                lefttext_system_rl('\nBoth fell in fight!')
                 break
             if mob_atack_random == 0:
-                print(f'{mob.name} промахнулся, у {self.name} осталось {self.hp} HP')
+                lefttext_system_m(f'{mob.name} missed! {self.name} left {self.hp} HP')
             else:
-                print(f'{self.name} получил урон {mob_atack_random} от {mob.name}, у вас осталось {self.hp} HP')
+                lefttext_system_m(f'{self.name} damaged for {mob_atack_random} from {mob.name}! You have left {self.hp} HP')
             if self_atack_random == 0:
-                print(f'{self.name} промахнулся, у {mob.name} осталось {mob.hp} HP')
+                lefttext_system_m(f'{self.name} missed! {mob.name} left {mob.hp} HP')
             else:
-                print(f'{mob.name} получил урон {self_atack_random} от {self.name},у моба  осталось {mob.hp} HP')
+                lefttext_system_m(f'{mob.name} demaged for {self_atack_random} from {self.name}! Enemy has left {mob.hp} HP')
     # Joke-cheat, if use it your params will be 10050 =)
     def loki(self):
         self.lvl = 100500

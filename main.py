@@ -130,7 +130,6 @@ class Game:
 
                     chsm = input(Fore.LIGHTCYAN_EX + 'Choise: ')
                     # print(Style.RESET_ALL)
-                    print(Fore.MAGENTA)
                     if chsm.lower() == 'f':
                         self.player.atack(self.enemy)
 
@@ -160,7 +159,7 @@ class Game:
                 else:
                     if self.player.hp <= 0:
                         centertext_system_c('Healer can resurrect you!(Total 3 times)')
-                        centertext_system_c(f'You use {self.res_counter} ressurect times.')
+                        centertext_system_c(f'You use resurrect {self.res_counter} times.')
                         centertext_system_c('This will be cost 100 gold!')
                         centertext_system_c('Res? Yes(y), No(n), Pray(p)')
                         chsh = input(Fore.LIGHTCYAN_EX + 'Choise: ')
