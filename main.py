@@ -19,7 +19,7 @@ class Game:
         maintext_system_cl('ENTER NAME')
         centertext_system_c('Your name, hero !\n')
 
-        player_name = input('Name: ')
+        player_name = input(Fore.LIGHTCYAN_EX + 'Name: ')
         while player_name == '' or player_name in [i[1] for i in self.load_player_db()]:
             maintext_system_cl('ENTER NAME')
             centertext_system("This name is busy!\n")
