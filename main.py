@@ -139,7 +139,7 @@ class Game:
                         centertext_system_c('Next turn')
 
                 else:
-                    centertext_system_c('All attempts are used')
+                    centertext_system_c('All attempts to resurrect are used')
                 #Load another player
             elif chs.lower() == 'l':
                 maintext_system_cl('LOAD GAME')
@@ -157,6 +157,7 @@ class Game:
                     centertext_system_g("Sorry hero!")
                     centertext_system_g("You have already used your 3 attempts!")
                 else:
+                    #Resurrect menu
                     if self.player.hp <= 0:
                         centertext_system_c('Healer can resurrect you!(Total 3 times)')
                         centertext_system_c(f'You use resurrect {self.res_counter} times.')
@@ -175,6 +176,7 @@ class Game:
                                 maintext_system_grats('MESSAGE')
                                 centertext_grats('This God dont hear you...')
                     else:
+                        #Healr menu
                         centertext_system_c('Healer can heal you 20 HP')
                         centertext_system_c('This will be cost 10 gold')
                         centertext_system_c('Heal? Yes(y), No(n)')
