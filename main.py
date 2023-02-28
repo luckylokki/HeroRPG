@@ -83,12 +83,13 @@ class Game:
                 centertext_system_c("New(n) game load(l)")
                 startch = input(Fore.LIGHTCYAN_EX + 'Choise: ')
                 if startch.lower() == 'n' or startch == '':
-                    # Make new global hero and enemy which will change over time
+                    # Make new hero
                     self.player = self.new_player()
                     # output player data
                     gridoutput(self.player.player_info_dict())
                     self.main_game()
                 if startch.lower() == 'l':
+                    # Load hero from database
                     self.player = self.load_player()
                     gridoutput(self.player.player_info_dict())
                     self.main_game()
