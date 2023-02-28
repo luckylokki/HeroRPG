@@ -18,7 +18,6 @@ class Game:
     def new_player(self):
         maintext_system_cl('ENTER NAME')
         centertext_system_c('Your name, hero !\n')
-
         player_name = input(Fore.LIGHTCYAN_EX + 'Name: ')
         while player_name == '' or player_name in [i[1] for i in self.load_player_db()]:
             maintext_system_cl('ENTER NAME')
@@ -64,16 +63,6 @@ class Game:
             maintext_system_cl('PLAYER LOADED')
         return player_name
 
-    # Save player in game
-    def save_player(self, player):
-        user = tuple(player.values())
-
-        with Connection() as c:
-            sqlite_update_query = """Update players set uname=?,hp=?,max_hp=?,atk=?,def=?,lvl=?,gold=?,exp=?,pve=? where uname = ?;"""
-            column_values = (user[0], user[1], user[2], user[3], user[4], user[5], user[6], user[7], user[8], user[0])
-            c.execute(sqlite_update_query, column_values)
-        lefttext_system_gl("Data is saved.")
-
     # Main game loop
     def game_loop(self):
         while True:
@@ -93,13 +82,13 @@ class Game:
                 maintext_system_cl('')
                 centertext_system_c("New(n) game load(l)")
                 startch = input(Fore.LIGHTCYAN_EX + 'Choise: ')
-                if startch == 'n' or startch == '':
+                if startch.lower() == 'n' or startch == '':
                     # Make new global hero and enemy which will change over time
                     self.player = self.new_player()
                     # output player data
                     gridoutput(self.player.player_info_dict())
                     self.main_game()
-                if startch == 'l':
+                if startch.lower() == 'l':
                     self.player = self.load_player()
                     gridoutput(self.player.player_info_dict())
                     self.main_game()
@@ -127,17 +116,14 @@ class Game:
                     centertext_system_cl('You can fight or run!')
                     centertext_system_c('Fiaght(f), Run(r)')
                     lefttext_system_g(f'Note: If you run, you will pay {self.enemy.gold} Gold.')
-
                     chsm = input(Fore.LIGHTCYAN_EX + 'Choise: ')
                     # print(Style.RESET_ALL)
                     if chsm.lower() == 'f':
                         self.player.atack(self.enemy)
-
                         gridoutput(self.player.player_info_dict())
                     else:
                         self.player.run(self.enemy)
                         centertext_system_c('Next turn')
-
                 else:
                     centertext_system_c('All attempts to resurrect are used')
                 #Load another player
@@ -149,7 +135,7 @@ class Game:
                 #Save your hero to database
             elif chs.lower() == 's':
                 maintext_system_cl('SAVE GAME')
-                self.save_player(self.player.data_db())
+                Connection.save_player(self.player.data_db())
                 #Use healer
             elif chs.lower() == 'h':
                 maintext_system_cl('HEALER')
