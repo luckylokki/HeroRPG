@@ -1,3 +1,5 @@
+#Module from https://github.com/crawsome
+#Mofidied for my game
 from colorama import Fore, Style
 import textwrap
 
